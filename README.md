@@ -34,7 +34,32 @@ public:
 
     ~PersonBase() = default;                            // Boilerplate item 5
 
+    // Dupa ce am scapat de boilerplate, ar trebui sa creem un constructor default
+    // unde initializam fiecare variabila cu ceva default
+    PersonBase();
+
+    // Si inca un constructor unde initializam fiecare proprietate
+
+    PersonBase(const std::string& name, unsigned int age, int occupation);
+
+    // Dupa ce avem constructori, ar fii ok sa putem avea drepturi de citire si scriere
+    // asupra proprietatilor. Adica getteri si setteri
+
+    std::string GetName() const; // returneaza o copie si functia nu modifica nimic, deci o declaram const
+    void SetName(const std::string& name);
+
+    unsigned int GetAge() const; 
+    void SetAge(unsigned int age);
+
+    int GetOccupation() const; 
+    void SetOccupation(int occupation);
+
+    // Acum, cum e normal in POO, trebuie sa ne gandim la ce stie sa faca o persoana
+    // Poate stie sa faca o persoana
+
 private:
+    // Astea toate se numesc proprietati
+
     std::string m_name;                                  // nume
     unsigned int m_age;                                  // varsta
     int   m_occupation;                                  // cu ce se ocupa
@@ -93,5 +118,39 @@ PersonBase::~PersonBase() {
 Definesc un destructor care nu face nimic
 Destructorul e apelat atunci cand o instanta a unui obiect iese din scope
 */
+
+PersonBase::PersonBase() :
+    m_name{}, m_age{}, m_occupation{} {
+
+}
+
+PersonBase::PersonBase(const std::string& name, unsigned int age, int occupation) :
+    m_name{ name }, m_age{ age }, m_occupation{ occupation } {
+
+}
+
+std::string PersonBase::GetName() const {
+    return m_name;
+}
+
+void PersonBase::SetName(const std::string& name) {
+    m_name = name;
+}
+
+unsigned int PersonBase::GetAge() const {
+    return m_age;
+}
+
+void PersonBase::SetAge(unsigned int age) {
+    m_age = age;
+}
+
+int PersonBase::GetOccupation() const {
+    return m_occupation;
+}
+
+void PersonBase::SetOccupation(int occupation) {
+    m_occupation = occupation;
+}
 
 ```
