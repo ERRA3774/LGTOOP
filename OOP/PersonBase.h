@@ -1,6 +1,10 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <random>
+#include <vector>
+#include <unordered_map>
 
 /*
     Luigi presupune ca fiecare persoana are:
@@ -49,7 +53,38 @@ public:
     void SetOccupation(int occupation);
 
     // Acum, cum e normal in POO, trebuie sa ne gandim la ce stie sa faca o persoana
-    // Poate stie sa faca o persoana
+    
+    // Poate stie sa vorbeasca
+    // Presupunem ca atunci cand doar vorbeste fara context, zice mereu un lucru random
+    // si informatia e lasata in aer
+    void Speak() const;
+
+    // Poate stie sa vorbeasca in functie de contex
+    // Presupunem ca daca stie sa raspunda la cateva formule matematica
+    std::string Speak(const std::string& message);
+    
+    // Overloading de operatori
+    // Functioneaza ca orice alta functie, putem specifica sa faca ce vrem noi
+    // Presupunem ca operatorul ++ ii creste varsta
+    void operator++(); // niciun parametru pentru ++obiect
+    void operator++(int); // un parametru de tip int pentru obiect++
+
+    // De ce functioneaza ca orice alta functie?
+    // Pentru ca puteam face o functie care sa indeplineasca celasi lucru
+    // De exemplu:
+    
+    void IncreaseAge();
+
+    // Presupunem ca operatorul -- ii scade ocupatia
+    void operator--();
+    void operator--(int);
+
+    void DecreaseOcupationScore();
+
+    // Asta pentru atunci cand vrem sa folosim std::cout << obiect (si nu numai cout)
+    friend std::ostream& operator<<(std::ostream& lhs, const PersonBase& rhs);
+
+    std::string ToString() const;
 
 private:
     // Astea toate se numesc proprietati

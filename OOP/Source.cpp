@@ -1,7 +1,20 @@
 #include <iostream>
 
+#include "PersonBase.h"
+
 int main() {
-    std::cout << "Hei" << std::endl;
+
+    PersonBase pb;
+
+    pb.SetName("Marcel");
+    pb.SetAge(19);
+    pb.SetOccupation(0);
+
+    std::cout << pb << std::endl;
+
+    /*
+    PersonBase: { name=Marcel, age=19, occupation=0 }
+    */
 
     return 0;
 }
